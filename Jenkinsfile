@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    // Definisi Variabel Global sesuai sistem Anda
+    // Definisi Variabel Global sesuai sistem yang ada
     environment {
         TF_BINARY = '/usr/bin/terraform'
         TRIVY_BINARY = '/usr/bin/trivy'
@@ -31,7 +31,7 @@ pipeline {
         }
 
         // Stage 4: Terraform Plan (Simulasi)
-        // Di sini kita panggil kredensial yang tadi Anda simpan
+        // Di sini kita panggil kredensial yang tadi sudah saya buat
         stage('Terraform Plan') {
             steps {
                 withCredentials([
