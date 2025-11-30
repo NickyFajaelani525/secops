@@ -13,9 +13,9 @@ provider "aws" {
 }
 
 # Dummy resource (tidak akan di-apply)
-resource "aws_s3_bucket" "example" {
-  bucket = "shiftleft-example-bucket-tod"
-}
+#resource "aws_s3_bucket" "example" {
+  #bucket = "shiftleft-example-bucket-tod"
+#}
 
 # --- SIMULASI SECURITY GROUP TIDAK AMAN ---
 #resource "aws_security_group" "bad_sg" {
