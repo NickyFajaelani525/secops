@@ -51,7 +51,7 @@ pipeline {
                 script {
                     // Scan folder saat ini (.)
                     // Jika ada CRITICAL issue, exit code jadi 1 (Pipeline GAGAL/MERAH)
-                    sh "${TRIVY_BINARY} config . --exit-code 1 --severity CRITICAL"
+                    sh "${TRIVY_BINARY} config . --exit-code 1 --severity HIGH,CRITICAL"
                 }
             }
         }
