@@ -46,11 +46,8 @@ pipeline {
         stage('Trivy Security Scan') {
             steps {
                 script {
-                    // CATATAN: Karena kita buka port 22 ke 0.0.0.0/0 di main.tf, 
-                    // Trivy mungkin akan teriak CRITICAL. 
-                    // Ubah exit-code ke 0 agar pipeline tetap lanjut buat EC2 meski ada warning.
-                    // Jika ingin strict, kembalikan ke 1.
-                    sh "${TRIVY_BINARY} config . --exit-code 0 --severity HIGH,CRITICAL"
+                    // CATATAN:pastikan hanya bisa di akses oleh ip public gueh saja
+                    sh "${TRIVY_BINARY} config . --exit-code 1 --severity HIGH,CRITICAL"
                 }
             }
         }
