@@ -42,6 +42,8 @@ resource "aws_security_group" "secops_sg" {
     cidr_blocks = ["103.188.169.160/32"] # ip public gueh sajah atau ubah untuk testing
   }
 
+  # TRIVY IGNORE: kita masih butuh internet untuk update/install package
+  # trivy:ignore:AVD-AWS-0104
   egress {
     from_port   = 0
     to_port     = 0
@@ -60,8 +62,20 @@ resource "aws_instance" "server_hasil_jenkins" {
 
   vpc_security_group_ids = [aws_security_group.secops_sg.id]
 
+  # perbaikan 1: mengaktifkan enkripsi hardisk (fix avd-aws-0131)
+  root_block_device {
+    volume_size = 8
+    encrypted   = true
+  }
+
+  # perbaikan 2: mewajibkan IMDSv2 token (fix avd-aws-0028)
+  metadata_option {
+  http_endpoint = "enabled"
+  http_tokens   = "required" #ini kuncinya!
+  }
+  
   tags = {
-    Name = "Server-Ubuntu-Noble"
+    Name = "Server-Ubuntu-Noble-Secured"
     Project = "Final-SecOps"
   }
 }
