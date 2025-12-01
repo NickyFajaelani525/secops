@@ -69,7 +69,7 @@ resource "aws_instance" "server_hasil_jenkins" {
   }
 
   # perbaikan 2: mewajibkan IMDSv2 token (fix avd-aws-0028)
-  metadata_option {
+  metadata_options {
   http_endpoint = "enabled"
   http_tokens   = "required" #ini kuncinya!
   }
