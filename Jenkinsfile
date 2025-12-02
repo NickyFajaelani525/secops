@@ -15,10 +15,16 @@ pipeline {
             }
         }
 
-	// Stage 2: inisiasi terraform......
+	// Stage 2: Inisialisasi Terraform (butuh kredensial s3)
         stage('Terraform Init') {
             steps {
-                sh "${TF_BINARY} init"
+                withCredentials([
+                    string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY_ID'),
+                    string(credentialsId: 'aws-secret-key', variable: 'AWS_SECRET_ACCESS_KEY')
+                ]) {
+                    // Sekarang init bawa kunci biar bisa masuk ke S3
+                    sh "${TF_BINARY} init"
+                }
             }
         }
 
