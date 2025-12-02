@@ -6,6 +6,15 @@ terraform {
       version = "~> 5.0"
     }
   }
+
+
+# 0. Memasukan ingatan terraform ke s3 bucket
+backend "s3" {
+  bucket = "terraform.state-secops"
+  key	 = "jenkins/terraform.tfstate"
+  region = "ap-southeast-1"
+
+  }
 }
 
 provider "aws" {
