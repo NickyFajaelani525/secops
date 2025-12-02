@@ -23,7 +23,7 @@ pipeline {
                     string(credentialsId: 'aws-secret-key', variable: 'AWS_SECRET_ACCESS_KEY')
                 ]) {
                     // Sekarang init bawa kunci biar bisa masuk ke S3
-                    sh "${TF_BINARY} init -reconfigure"
+                    sh "${TF_BINARY} init -migrate-state -force-copy"
                 }
             }
         }
