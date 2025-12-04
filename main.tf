@@ -48,7 +48,7 @@ resource "aws_security_group" "secops_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # ip public gueh sajah atau ubah untuk testing
+    cidr_blocks = ["103.188.169.160/32"] # ip public gueh sajah atau ubah untuk testing, aku nak mbg super
   }
 
   # TRIVY IGNORE: kita masih butuh internet untuk update/install package
