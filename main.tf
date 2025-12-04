@@ -8,7 +8,7 @@ terraform {
   }
 
 
-# 0. Memasukan ingatan terraform ke s3 bucket via cloud
+# 0. Memasukan ingatan terraform ke s3 bucket di aws
 backend "s3" {
   bucket = "terraform.state-secops"
   key	 = "jenkins/terraform.tfstate"
