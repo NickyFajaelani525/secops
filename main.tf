@@ -48,7 +48,7 @@ resource "aws_security_group" "secops_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # pake ip public pribadi 36.71.189.111/32
+    cidr_blocks = ["36.71.189.111/32"] # pake ip public pribadi 36.71.189.111/32
   }
 
   # TRIVY IGNORE: kita masih butuh internet untuk update/install package
